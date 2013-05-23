@@ -11,6 +11,9 @@ import java.util.*;
 
 public class NameSurferEntry implements NameSurferConstants {
 
+	private int[] rankingArray;
+	private String name;
+	
 /* Constructor: NameSurferEntry(line) */
 /**
  * Creates a new NameSurferEntry from a data line as it appears
@@ -19,7 +22,13 @@ public class NameSurferEntry implements NameSurferConstants {
  * decade.
  */
 	public NameSurferEntry(String line) {
-		// You fill this in //
+	
+		rankingArray = new int[NDECADES];
+		StringTokenizer tokenizer = new StringTokenizer(line);
+		name = tokenizer.nextToken();
+		for (int i=0 ; i < rankingArray.length ; i++) {
+			rankingArray[i] = Integer.parseInt(tokenizer.nextToken());
+		}
 	}
 
 /* Method: getName() */
@@ -27,8 +36,7 @@ public class NameSurferEntry implements NameSurferConstants {
  * Returns the name associated with this entry.
  */
 	public String getName() {
-		// You need to turn this stub into a real implementation //
-		return null;
+		return name;
 	}
 
 /* Method: getRank(decade) */
@@ -40,8 +48,7 @@ public class NameSurferEntry implements NameSurferConstants {
  * not appear in a decade, the rank value is 0.
  */
 	public int getRank(int decade) {
-		// You need to turn this stub into a real implementation //
-		return 0;
+		return rankingArray[decade];
 	}
 
 /* Method: toString() */
@@ -50,8 +57,14 @@ public class NameSurferEntry implements NameSurferConstants {
  * NameSurferEntry.
  */
 	public String toString() {
-		// You need to turn this stub into a real implementation //
-		return "";
+		String string = "";
+		for (int i = 0; i < rankingArray.length; i++) {
+			if (i != 0) {
+				string += " ";
+			}
+			string += Integer.toString(rankingArray[i]);
+		}
+		return name + " [" + string + "]";
 	}
 }
 
