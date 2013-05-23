@@ -39,7 +39,9 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
  */
 	public void actionPerformed(ActionEvent e) {
 		
-		if(e.getActionCommand().equals("Clear")) removeAll();
+		if(e.getActionCommand().equals("Clear")){
+			removeAll();
+		}
 		else if (e.getActionCommand().equals("Graph")) {
 			println(nameField.getText());
 		}
