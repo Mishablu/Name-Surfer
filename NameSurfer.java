@@ -23,7 +23,9 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 		add(clear, NORTH);
 		JButton graph = new JButton("Graph");
 		add(graph, NORTH);
-		
+		JTextField nameField = new JTextField(40);
+		add(nameField, NORTH);
+		add(new JLabel("Name"), NORTH);
 		addActionListeners();
 	}
 
@@ -35,9 +37,8 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
  */
 	public void actionPerformed(ActionEvent e) {
 		
-		if(e.getActionCommand().equals("Clear")) {
-			
-		} else if (e.getActionCommand().equals("Graph")) {
+		if(e.getActionCommand().equals("Clear")) removeAll();
+		else if (e.getActionCommand().equals("Graph")) {
 			
 		}
 	}
