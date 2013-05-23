@@ -18,14 +18,14 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
  */
 	public void init() {
 	    // You fill this in, along with any helper methods //
-		
-		JButton clear = new JButton("Clear");
-		add(clear, NORTH);
-		JButton graph = new JButton("Graph");
-		add(graph, NORTH);
+		add(new JLabel("Name"), NORTH);
 		JTextField nameField = new JTextField(40);
 		add(nameField, NORTH);
-		add(new JLabel("Name"), NORTH);
+		JButton graph = new JButton("Graph");
+		add(graph, NORTH);
+		JButton clear = new JButton("Clear");
+		add(clear, NORTH);
+		
 		addActionListeners();
 	}
 
