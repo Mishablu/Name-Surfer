@@ -9,7 +9,7 @@ import acm.program.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class NameSurfer extends Program implements NameSurferConstants {
+public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 
 	private JTextField nameField;
 	private int TEXTBOX_SIZE = 20;
@@ -41,9 +41,9 @@ public class NameSurfer extends Program implements NameSurferConstants {
 		
 		if(e.getActionCommand().equals("Clear")) removeAll();
 		else if (e.getActionCommand().equals("Graph")) {
-			println(nameField.getText());
+			println("Graph: " + nameField.getText());
 		} else if (e.getSource() == nameField) {
-			println(nameField.getText());
+			println("Graph: " + "''" + nameField.getText() + "''");
 			nameField.removeAll();
 		}
 	}
