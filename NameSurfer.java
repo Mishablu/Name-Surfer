@@ -11,6 +11,8 @@ import javax.swing.*;
 
 public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 
+	private JTextField nameField;
+	private int TEXTBOX_SIZE = 20;
 /* Method: init() */
 /**
  * This method has the responsibility for reading in the data base
@@ -19,13 +21,13 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 	public void init() {
 	    // You fill this in, along with any helper methods //
 		add(new JLabel("Name"), NORTH);
-		JTextField nameField = new JTextField(20);
+		nameField = new JTextField(TEXTBOX_SIZE);
 		add(nameField, NORTH);
+		nameField.addActionListener(this);
 		JButton graph = new JButton("Graph");
 		add(graph, NORTH);
 		JButton clear = new JButton("Clear");
 		add(clear, NORTH);
-		
 		addActionListeners();
 	}
 
@@ -39,7 +41,7 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 		
 		if(e.getActionCommand().equals("Clear")) removeAll();
 		else if (e.getActionCommand().equals("Graph")) {
-			
+			println(nameField.getText());
 		}
 	}
 }
