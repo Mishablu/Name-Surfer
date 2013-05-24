@@ -49,7 +49,10 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 		else if (e.getActionCommand().equals("Graph") || e.getSource() == nameField) {
 			String str = nameField.getText();
 			NameSurferEntry entry = dataBase.findEntry(str);
-			println(entry.toString());
+			if (entry != null) {
+				println(entry.toString());
+			}
+			
 			//format all words to Sam
 			//println("Graph: " + nameField.getText());
 		}
