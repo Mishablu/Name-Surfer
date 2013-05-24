@@ -22,7 +22,6 @@ public class NameSurferEntry implements NameSurferConstants {
  * decade.
  */
 	public NameSurferEntry(String line) {
-	
 		rankingArray = new int[NDECADES];
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		name = tokenizer.nextToken();
