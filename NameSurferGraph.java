@@ -72,20 +72,20 @@ public class NameSurferGraph extends GCanvas
 	private void drawLabel(int x , int i) {
 		int date = 0;
 		switch (i){
-		case 0: date = 1900;
-		case 1: date = 1910;
-		case 2: date = 1920;
-		case 3: date = 1930;
-		case 4: date = 1940;
-		case 5: date = 1950;
-		case 6: date = 1960;
-		case 7: date = 1970;
-		case 8: date = 1980;
-		case 9: date = 1990;
-		case 10: date = 2000;
-		case 11: date = 2010;
+		case 0: date = 1900; break;
+		case 1: date = 1910; break;
+		case 2: date = 1920; break;
+		case 3: date = 1930; break;
+		case 4: date = 1940; break;
+		case 5: date = 1950; break;
+		case 6: date = 1960; break;
+		case 7: date = 1970; break;
+		case 8: date = 1980; break;
+		case 9: date = 1990; break;
+		case 10: date = 2000; break;
+		case 11: date = 2010; break;
 		}
-		GLabel label = new GLabel(Integer.toString(date), x , getHeight()-GRAPH_MARGIN_SIZE);
+		GLabel label = new GLabel(Integer.toString(date), x , getHeight());
 		add(label);
 	}
 	
