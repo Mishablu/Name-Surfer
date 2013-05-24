@@ -52,18 +52,18 @@ public class NameSurferGraph extends GCanvas
 	public void update() {
 		//check that this remove all doesnt cause bugzzz
 		removeAll();
-		int lineSpacing = (getWidth()-(2*GRAPH_MARGIN_SIZE)) / NDECADES;
-		
+		int lineSpacingX = (getWidth()-(2*GRAPH_MARGIN_SIZE)) / NDECADES;
+		int lineSpacingY = (getHeight()-(2*GRAPH_MARGIN_SIZE)) / NDECADES;
 		for (int i=0 ; i <= NDECADES ; i++) {
-			drawLine(GRAPH_MARGIN_SIZE+(i*lineSpacing));
-			//draw several horizontal lines every 100 ranks
+			drawLines(GRAPH_MARGIN_SIZE+(i*lineSpacingX) , GRAPH_MARGIN_SIZE+(i*lineSpacingY));
+			
 		}
 		
 	}
-	private void drawLine(int x) {
+	private void drawLines(int x, int y) {
 		GLine line = new GLine(x, GRAPH_MARGIN_SIZE , x , getHeight() - GRAPH_MARGIN_SIZE);
 		add(line);
-		GLine line2 = new GLine(GRAPH_MARGIN_SIZE, x, getWidth() - GRAPH_MARGIN_SIZE , x);
+		GLine line2 = new GLine(GRAPH_MARGIN_SIZE , y , getWidth()-GRAPH_MARGIN_SIZE , y);
 		add(line2);
 	}
 	
