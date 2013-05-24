@@ -9,7 +9,7 @@ import acm.program.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class NameSurfer extends Program implements NameSurferConstants {
+public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 
 	private JTextField nameField;
 	private int TEXTBOX_SIZE = 20;
@@ -29,8 +29,8 @@ public class NameSurfer extends Program implements NameSurferConstants {
 		nameField = new JTextField(TEXTBOX_SIZE);
 		add(nameField, NORTH);
 		nameField.addActionListener(this);
-		JButton graph = new JButton("Graph");
-		add(graph, NORTH);
+		JButton graphButton = new JButton("Graph");
+		add(graphButton, NORTH);
 		JButton clear = new JButton("Clear");
 		add(clear, NORTH);
 		addActionListeners();
