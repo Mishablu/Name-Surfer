@@ -19,8 +19,7 @@ public class NameSurferGraph extends GCanvas
 	* Creates a new NameSurferGraph object that displays the data.
 	*/
 	public NameSurferGraph() {
-		addComponentListener(this);
-	
+		addComponentListener(this);	
 	}
 	
 	
@@ -51,16 +50,21 @@ public class NameSurferGraph extends GCanvas
 	* the size of the canvas changes.
 	*/
 	public void update() {
+		//check that this remove all doesnt cause bugzzz
 		removeAll();
 		int lineSpacing = (getWidth()-(2*GRAPH_MARGIN_SIZE)) / NDECADES;
+		
 		for (int i=0 ; i <= NDECADES ; i++) {
 			drawLine(GRAPH_MARGIN_SIZE+(i*lineSpacing));
+			//draw several horizontal lines every 100 ranks
 		}
 		
 	}
 	private void drawLine(int x) {
 		GLine line = new GLine(x, GRAPH_MARGIN_SIZE , x , getHeight() - GRAPH_MARGIN_SIZE);
 		add(line);
+		GLine line2 = new GLine(GRAPH_MARGIN_SIZE, x, getWidth() - GRAPH_MARGIN_SIZE , x);
+		add(line2);
 	}
 	
 	
