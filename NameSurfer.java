@@ -15,7 +15,7 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 	private int TEXTBOX_SIZE = 20;
 	
 	private NameSurferGraph graph;
-	private NameSurferDataBase dataBase;
+	private NameSurferDataBase dataBase = new NameSurferDataBase("names-data.txt");
 	
 /* Method: init() */
 /**
