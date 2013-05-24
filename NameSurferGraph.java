@@ -53,7 +53,7 @@ public class NameSurferGraph extends GCanvas
 	public void update() {
 		int lineSpacing = (getWidth()-(2*GRAPH_MARGIN_SIZE)) / NDECADES;
 		for (int i=0 ; i < NDECADES ; i++) {
-			drawLine(i*lineSpacing);
+			drawLine(GRAPH_MARGIN_SIZE+(i*lineSpacing));
 		}
 		
 	}
