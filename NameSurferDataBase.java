@@ -1,6 +1,6 @@
 import java.io.*;
 import acm.util.ErrorException;
-import acmx.export.java.util.Map;
+import acmx.export.java.util.*;
 
 /*
  * File: NameSurferDataBase.java
@@ -15,7 +15,7 @@ import acmx.export.java.util.Map;
 
 public class NameSurferDataBase implements NameSurferConstants {
 	
-	private Map nameMap;
+	private Map nameMap = new HashMap();
 	
 /* Constructor: NameSurferDataBase(filename) */
 /**
@@ -33,9 +33,7 @@ public class NameSurferDataBase implements NameSurferConstants {
 				String line = rd.readLine();
 				if (line == null) break;
 				NameSurferEntry entry = new NameSurferEntry(line);
-				Map<String, int[]> nameMap = new HashMap<String, int[]>;
-				
-				
+				nameMap.put(entry.getName(), entry);
 			}
 		} catch(Exception e) {
 			throw new ErrorException(e);
@@ -49,7 +47,9 @@ public class NameSurferDataBase implements NameSurferConstants {
  * method returns null.
  */
 	public NameSurferEntry findEntry(String name) {
-		// You need to turn this stub into a real implementation //
+		if (nameMap.containsKey(name)) {
+			return (NameSurferEntry) nameMap.get(name);
+		}
 		return null;
 	}
 }
