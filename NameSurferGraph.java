@@ -58,7 +58,7 @@ public class NameSurferGraph extends GCanvas
 		}
 		drawHorizontalLine(GRAPH_MARGIN_SIZE);
 	}
-	private void drawLine(int x) {
+	private void drawLine(double x) {
 		GLine line = new GLine(x, GRAPH_MARGIN_SIZE , x , getHeight() - GRAPH_MARGIN_SIZE);
 		add(line);
 	}
