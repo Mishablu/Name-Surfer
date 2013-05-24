@@ -1,3 +1,7 @@
+import java.io.*;
+import acm.util.ErrorException;
+import acmx.export.java.util.Map;
+
 /*
  * File: NameSurferDataBase.java
  * -----------------------------
@@ -11,6 +15,8 @@
 
 public class NameSurferDataBase implements NameSurferConstants {
 	
+	private Map nameMap;
+	
 /* Constructor: NameSurferDataBase(filename) */
 /**
  * Creates a new NameSurferDataBase and initializes it using the
@@ -19,7 +25,21 @@ public class NameSurferDataBase implements NameSurferConstants {
  * occurs as the file is being read.
  */
 	public NameSurferDataBase(String filename) {
-		// You fill this in //
+		
+		try{
+			BufferedReader rd = new BufferedReader(new FileReader(filename));
+			
+			while (true) {
+				String line = rd.readLine();
+				if (line == null) break;
+				NameSurferEntry entry = new NameSurferEntry(line);
+				Map<String, int[]> nameMap = new HashMap<String, int[]>;
+				
+				
+			}
+		} catch(Exception e) {
+			throw new ErrorException(e);
+		}
 	}
 	
 /* Method: findEntry(name) */
