@@ -20,7 +20,9 @@ public class NameSurferGraph extends GCanvas
 	*/
 	public NameSurferGraph() {
 		addComponentListener(this);
-		// You fill in the rest //
+		int lineSpacing = (getWidth()-(2*GRAPH_MARGIN_SIZE)) / NDECADES;
+		for (int i=0 ; i <= NDECADES ; i++) {
+			drawLine(GRAPH_MARGIN_SIZE+(i*lineSpacing));
 	}
 	
 	
@@ -51,6 +53,7 @@ public class NameSurferGraph extends GCanvas
 	* the size of the canvas changes.
 	*/
 	public void update() {
+		removeAll();
 		int lineSpacing = (getWidth()-(2*GRAPH_MARGIN_SIZE)) / NDECADES;
 		for (int i=0 ; i <= NDECADES ; i++) {
 			drawLine(GRAPH_MARGIN_SIZE+(i*lineSpacing));
