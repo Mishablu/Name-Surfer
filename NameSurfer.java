@@ -15,7 +15,7 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 	private int TEXTBOX_SIZE = 20;
 	
 	private NameSurferGraph graph;
-	private NameSurferDataBase dataBase = new NameSurferDataBase("names-data.txt");
+	private NameSurferDataBase dataBase = new NameSurferDataBase(NAMES_DATA_FILE);
 	
 /* Method: init() */
 /**
@@ -23,7 +23,6 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
  * and initializing the interactors at the top of the window.
  */
 	public void init() {
-		
 		
 		add(new JLabel("Name"), NORTH);
 		nameField = new JTextField(TEXTBOX_SIZE);

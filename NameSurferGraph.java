@@ -51,7 +51,15 @@ public class NameSurferGraph extends GCanvas
 	* the size of the canvas changes.
 	*/
 	public void update() {
-		// You fill this in //
+		int lineSpacing = (getWidth()-(2*GRAPH_MARGIN_SIZE)) / NDECADES;
+		for (int i=0 ; i < NDECADES ; i++) {
+			drawLine(i*lineSpacing);
+		}
+		
+	}
+	private void drawLine(int x) {
+		GLine line = new GLine(x, GRAPH_MARGIN_SIZE , x , getHeight() - GRAPH_MARGIN_SIZE);
+		add(line);
 	}
 	
 	
