@@ -9,7 +9,7 @@ import acm.program.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
+public class NameSurfer extends Program implements NameSurferConstants {
 
 	private JTextField nameField;
 	private int TEXTBOX_SIZE = 20;
@@ -23,8 +23,7 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
  * and initializing the interactors at the top of the window.
  */
 	public void init() {
-		graph = new NameSurferGraph();
-		add(graph);
+		
 		
 		add(new JLabel("Name"), NORTH);
 		nameField = new JTextField(TEXTBOX_SIZE);
@@ -35,6 +34,9 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 		JButton clear = new JButton("Clear");
 		add(clear, NORTH);
 		addActionListeners();
+		
+		graph = new NameSurferGraph();
+		add(graph);
 	}
 
 /* Method: actionPerformed(e) */
@@ -55,8 +57,6 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 			} else {
 				println("invalid entry, please enter another name");
 			}
-			//format all words to Sam
-			//println("Graph: " + nameField.getText());
 		}
 	}
 	private String formatName(String str) {
