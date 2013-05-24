@@ -46,15 +46,21 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getActionCommand().equals("Clear")) removeAll();
+		
 		else if (e.getActionCommand().equals("Graph") || e.getSource() == nameField) {
-			String str = nameField.getText();
+			String str = formatName(nameField.getText());
 			NameSurferEntry entry = dataBase.findEntry(str);
 			if (entry != null) {
 				println(entry.toString());
 			}
-			
 			//format all words to Sam
 			//println("Graph: " + nameField.getText());
 		}
+	}
+	private String formatName(String str) {
+		String firstLetter = str.substring(0,1).toUpperCase();
+		String word = str.substring(1).toLowerCase();
+		str = firstLetter + word;
+		return str;
 	}
 }
