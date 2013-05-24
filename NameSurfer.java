@@ -52,6 +52,8 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 			NameSurferEntry entry = dataBase.findEntry(str);
 			if (entry != null) {
 				println(entry.toString());
+			} else {
+				println("invalid entry, please enter another name");
 			}
 			//format all words to Sam
 			//println("Graph: " + nameField.getText());
