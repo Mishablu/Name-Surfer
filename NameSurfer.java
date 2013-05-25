@@ -46,7 +46,10 @@ public class NameSurfer extends Program implements NameSurferConstants {
  */
 	public void actionPerformed(ActionEvent e) {
 		
-		if(e.getActionCommand().equals("Clear")) removeAll();
+		if(e.getActionCommand().equals("Clear")){
+			removeAll();
+			graph.clear();
+		}
 		
 		else if (e.getActionCommand().equals("Graph") || e.getSource() == nameField) {
 			String str = formatName(nameField.getText());
