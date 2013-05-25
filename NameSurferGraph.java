@@ -68,7 +68,9 @@ public class NameSurferGraph extends GCanvas
 	public void drawGrid(int lineSpacing) {
 		for (int i=0 ; i < NDECADES ; i++) {
 			double x = i * lineSpacing;
-			add(new GLine(x, 0, x, getHeight()));
+			if (i !=0) {
+				add(new GLine(x, 0, x, getHeight()));
+			}
 			add(new GLabel(Integer.toString(START_DECADE+(i*10)), x , getHeight()-(GRAPH_MARGIN_SIZE/3)));
 		}
 		add(new GLine(0, GRAPH_MARGIN_SIZE, getWidth(), GRAPH_MARGIN_SIZE));
