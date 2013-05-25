@@ -24,19 +24,17 @@ public class NameSurfer extends Program implements NameSurferConstants {
  */
 	public void init() {
 		
+		
 		add(new JLabel("Name"), NORTH);
 		nameField = new JTextField(TEXTBOX_SIZE);
 		add(nameField, NORTH);
 		nameField.addActionListener(this);
 		
-		JButton graphButton = new JButton("Graph");
-		add(graphButton, NORTH);
+		add(new JButton ("Graph"), NORTH);
 		
-		JButton clear = new JButton("Clear");
-		add(clear, NORTH);
+		add(new JButton("Clear"), NORTH);
 		
-		JButton delete = new JButton("Delete");
-		add(delete, NORTH);
+		add(new JButton("Delete"), NORTH);
 		
 		addActionListeners();
 		
