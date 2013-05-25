@@ -52,7 +52,7 @@ public class NameSurferGraph extends GCanvas
 	public void update() {
 		//check that this remove all doesnt cause bugzzz
 		removeAll();
-		int lineSpacing = (getWidth()-(2*GRAPH_MARGIN_SIZE)) / NDECADES-1;
+		int lineSpacing = (getWidth()-(2*GRAPH_MARGIN_SIZE)) / (NDECADES-1);
 		for (int i=0 ; i < NDECADES ; i++) {
 			drawLine(GRAPH_MARGIN_SIZE+(i*lineSpacing));
 			drawLabel(GRAPH_MARGIN_SIZE+(i*lineSpacing) , i);
