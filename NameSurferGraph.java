@@ -15,11 +15,14 @@ import java.awt.*;
 public class NameSurferGraph extends GCanvas
 	implements NameSurferConstants, ComponentListener {
 
+	
+	private ArrayList<NameSurferEntry> nameArray;
 	/**
 	* Creates a new NameSurferGraph object that displays the data.
 	*/
 	public NameSurferGraph() {
-		addComponentListener(this);	
+		addComponentListener(this);
+		nameArray = new ArrayList<NameSurferEntry>();
 	}
 	
 	
@@ -27,7 +30,10 @@ public class NameSurferGraph extends GCanvas
 	* Clears the list of name surfer entries stored inside this class.
 	*/
 	public void clear() {
-		// You fill this in //
+		if (!nameArray.isEmpty()) {
+			nameArray.clear();
+			update();
+		}
 	}
 	
 	
@@ -38,7 +44,10 @@ public class NameSurferGraph extends GCanvas
 	* simply stores the entry; the graph is drawn by calling update.
 	*/
 	public void addEntry(NameSurferEntry entry) {
-		// You fill this in //
+		if(!nameArray.contains(entry)){
+			nameArray.add(entry);
+			update();
+		}
 	}
 	
 	
@@ -52,18 +61,20 @@ public class NameSurferGraph extends GCanvas
 	public void update() {
 		//check that this remove all doesnt cause bugzzz
 		removeAll();		
-		int lineSpacing = (getWidth()-(2*GRAPH_MARGIN_SIZE)) / (NDECADES);
+		int lineSpacing = (getWidth()-(2*GRAPH_MARGIN_SIZE)) / (NDECADES-1);
+		drawLinesAndLabels(lineSpacing);
+		//add horizontal lines
+	}
+	public void drawLinesAndLabels(int lineSpacing) {
 		for (int i=0 ; i < NDECADES ; i++) {
 			double x = GRAPH_MARGIN_SIZE + (i * lineSpacing);
 			add(new GLine(x, GRAPH_MARGIN_SIZE, x, getHeight() - GRAPH_MARGIN_SIZE));
-			drawLabel(x, i);
+			GLabel label = new GLabel(Integer.toString(START_DECADE+(i*10)), x , getHeight()-(GRAPH_MARGIN_SIZE/3));
+			label.move(-label.getWidth()/2, 0);
+			add(label);
 		}
 		add(new GLine(GRAPH_MARGIN_SIZE, GRAPH_MARGIN_SIZE, getWidth() - GRAPH_MARGIN_SIZE , GRAPH_MARGIN_SIZE));
 		add(new GLine(GRAPH_MARGIN_SIZE, getHeight() - GRAPH_MARGIN_SIZE , getWidth() - GRAPH_MARGIN_SIZE , getHeight() - GRAPH_MARGIN_SIZE));
-	}
-	private void drawLabel(double x , int i) {
-		GLabel label = new GLabel(Integer.toString(START_DECADE+(i*10)), x , getHeight()-(GRAPH_MARGIN_SIZE/3));
-		add(label);
 	}
 	
 	
