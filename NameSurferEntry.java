@@ -10,7 +10,9 @@ import java.util.*;
 
 public class NameSurferEntry implements NameSurferConstants {
 
+	//initialize the array of integers where the rankings will be stored as an instance variable
 	private int[] rankingArray;
+	//initialize the string that will contain the name of each line of the data file
 	private String name;
 	
 /* Constructor: NameSurferEntry(line) */
@@ -21,7 +23,9 @@ public class NameSurferEntry implements NameSurferConstants {
  * decade.
  */
 	public NameSurferEntry(String line) {
+		//initialize the array that will contain the rankings to the proper amount of decades
 		rankingArray = new int[NDECADES];
+		//use the tokenizer to tokenize the name and then the rankings (and save these to the array)
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		name = tokenizer.nextToken();
 		for (int i=0 ; i < rankingArray.length ; i++) {
@@ -55,7 +59,9 @@ public class NameSurferEntry implements NameSurferConstants {
  * NameSurferEntry.
  */
 	public String toString() {
+		//initialize the string
 		String string = "";
+		//the for loop changes the integers (rankings) to strings in ordert to return them as such in the proper format
 		for (int i = 0; i < rankingArray.length; i++) {
 			if (i != 0) {
 				string += " ";
