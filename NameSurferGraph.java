@@ -71,8 +71,8 @@ public class NameSurferGraph extends GCanvas
 			add(new GLine(x, GRAPH_MARGIN_SIZE, x, getHeight() - GRAPH_MARGIN_SIZE));
 			add(new GLabel(Integer.toString(START_DECADE+(i*10)), x , getHeight()-(GRAPH_MARGIN_SIZE/3)));
 		}
-		add(new GLine(GRAPH_MARGIN_SIZE, GRAPH_MARGIN_SIZE, getWidth() - GRAPH_MARGIN_SIZE , GRAPH_MARGIN_SIZE));
-		add(new GLine(GRAPH_MARGIN_SIZE, getHeight() - GRAPH_MARGIN_SIZE , getWidth() - GRAPH_MARGIN_SIZE , getHeight() - GRAPH_MARGIN_SIZE));
+		add(new GLine(0, GRAPH_MARGIN_SIZE, getWidth(), GRAPH_MARGIN_SIZE));
+		add(new GLine(0, getHeight() - GRAPH_MARGIN_SIZE , getWidth(), getHeight() - GRAPH_MARGIN_SIZE));
 	}
 	
 	
