@@ -63,18 +63,39 @@ public class NameSurferGraph extends GCanvas
 		removeAll();		
 		int lineSpacing = getWidth()/ NDECADES;
 		drawGrid(lineSpacing);
-		
+		if(!nameArray.isEmpty()) {
+			plotLines(lineSpacing);
+		}
 	}
-	public void drawGrid(int lineSpacing) {
+	private void drawGrid(int lineSpacing) {
 		for (int i=0 ; i < NDECADES ; i++) {
 			double x = i * lineSpacing;
-			if (i !=0) {
-				add(new GLine(x, 0, x, getHeight()));
-			}
+			add(new GLine(x, 0, x, getHeight()));
 			add(new GLabel(Integer.toString(START_DECADE+(i*10)), x , getHeight()-(GRAPH_MARGIN_SIZE/3)));
 		}
 		add(new GLine(0, GRAPH_MARGIN_SIZE, getWidth(), GRAPH_MARGIN_SIZE));
 		add(new GLine(0, getHeight() - GRAPH_MARGIN_SIZE , getWidth(), getHeight() - GRAPH_MARGIN_SIZE));
+	}
+	
+	private void plotLines(int lineSpacing) {
+		//read entries from the array
+		for (int i = 0 ; i < nameArray.size() ; i++) {
+			NameSurferEntry entry = nameArray.get(i);
+			if (entry != null) {
+				drawPlotLine(entry, lineSpacing);
+			}
+		}
+	}
+	private void drawPlotLine(NameSurferEntry entry, int lineSpacing) {
+		for (int i=0 ; i<NDECADES ; i++) {
+			int ranking = entry.getRank(i);
+			double x = i * lineSpacing;
+			double y = (((getHeight() - (2*GRAPH_MARGIN_SIZE)) * (double) ranking/MAX_RANK) + GRAPH_MARGIN_SIZE);
+			
+			
+			
+			
+		}
 	}
 	
 	
