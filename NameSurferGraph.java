@@ -17,6 +17,7 @@ public class NameSurferGraph extends GCanvas
 
 	
 	private ArrayList<NameSurferEntry> nameArray;
+	private int N_COLORS = 4;
 	/**
 	* Creates a new NameSurferGraph object that displays the data.
 	*/
@@ -76,14 +77,14 @@ public class NameSurferGraph extends GCanvas
 		add(new GLine(0, GRAPH_MARGIN_SIZE, getWidth(), GRAPH_MARGIN_SIZE));
 		add(new GLine(0, getHeight() - GRAPH_MARGIN_SIZE , getWidth(), getHeight() - GRAPH_MARGIN_SIZE));
 	}
-	
-	
+
 	private void plotRanking(int lineSpacing) {
 		for (int i = 0 ; i < nameArray.size() ; i++) {
 			NameSurferEntry entry = nameArray.get(i);
 			if (entry != null) {
 				double x1 = 0.0; 
 				double y1 = 0.0;
+				Color color = setColor(i);
 				for (int j=0 ; j<NDECADES ; j++) {
 					int ranking = entry.getRank(j);
 					double x = j * lineSpacing;
@@ -94,7 +95,7 @@ public class NameSurferGraph extends GCanvas
 						string = entry.getName() + "*";
 					}
 					if (j != 0) {
-						drawLine(x1, y1 , x ,y);
+						drawLine(x1, y1, x , y, color);
 					}
 					drawLabel (x, y, string);
 					x1 = x;
@@ -103,8 +104,18 @@ public class NameSurferGraph extends GCanvas
 			}
 		}
 	}
-	private void drawLine(double x1, double y1, double x, double y) {
+	private Color setColor(int i) {
+		switch(i % N_COLORS) {
+		case 0: return Color.black;
+		case 1: return Color.red;
+		case 2: return Color.blue;
+		case 3: return Color.magenta;
+		}
+		return null;
+	}
+	private void drawLine(double x1, double y1, double x, double y, Color color) {
 		GLine line = new GLine(x1, y1, x, y);
+		line.setColor(color);
 		add(line);
 	}
 	private void drawLabel(double x, double y , String string) {
