@@ -52,8 +52,8 @@ public class NameSurferGraph extends GCanvas
 	public void update() {
 		//check that this remove all doesnt cause bugzzz
 		removeAll();
-		int lineSpacing = (getWidth()-(2*GRAPH_MARGIN_SIZE)) / NDECADES;
-		for (int i=0 ; i <= NDECADES ; i++) {
+		int lineSpacing = (getWidth()-(2*GRAPH_MARGIN_SIZE)) / NDECADES-1;
+		for (int i=0 ; i < NDECADES ; i++) {
 			drawLine(GRAPH_MARGIN_SIZE+(i*lineSpacing));
 			drawLabel(GRAPH_MARGIN_SIZE+(i*lineSpacing) , i);
 		}
@@ -83,7 +83,6 @@ public class NameSurferGraph extends GCanvas
 		case 8: date = 1980; break;
 		case 9: date = 1990; break;
 		case 10: date = 2000; break;
-		case 11: date = 2010; break;
 		}
 		GLabel label = new GLabel(Integer.toString(date), x , getHeight()-(GRAPH_MARGIN_SIZE/3));
 		label.move(-label.getWidth()/2, 0);
