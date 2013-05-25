@@ -68,6 +68,7 @@ public class NameSurferEntry implements NameSurferConstants {
 			}
 			string += Integer.toString(rankingArray[i]);
 		}
+		//return the name and the rankings in the proper format
 		return name + " [" + string + "]";
 	}
 }
