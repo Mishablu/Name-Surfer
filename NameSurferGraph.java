@@ -15,14 +15,16 @@ import java.awt.*;
 public class NameSurferGraph extends GCanvas
 	implements NameSurferConstants, ComponentListener {
 
-	
+	//initialize the array list that will contain the different name entries as an instance variable
 	private ArrayList<NameSurferEntry> nameArray;
+	//initialize the maximum number of colors
 	private int N_COLORS = 4;
 	/**
 	* Creates a new NameSurferGraph object that displays the data.
 	*/
 	public NameSurferGraph() {
 		addComponentListener(this);
+		//initialize the array list that will contain the different name entries as an instance variable
 		nameArray = new ArrayList<NameSurferEntry>();
 	}
 	
@@ -31,6 +33,7 @@ public class NameSurferGraph extends GCanvas
 	* Clears the list of name surfer entries stored inside this class.
 	*/
 	public void clear() {
+		//check that the arraylist is not empty befor clearing it
 		if (!nameArray.isEmpty()) {
 			nameArray.clear();
 			update();
@@ -45,6 +48,7 @@ public class NameSurferGraph extends GCanvas
 	* simply stores the entry; the graph is drawn by calling update.
 	*/
 	public void addEntry(NameSurferEntry entry) {
+		//check that the arraylist doesnt already contain the entry before deleting it
 		if(!nameArray.contains(entry)){
 			nameArray.add(entry);
 			update();
