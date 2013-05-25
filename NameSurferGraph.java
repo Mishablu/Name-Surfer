@@ -60,7 +60,6 @@ public class NameSurferGraph extends GCanvas
 	* the size of the canvas changes.
 	*/
 	public void update() {
-		//check that this remove all doesnt cause bugzzz
 		removeAll();		
 		int lineSpacing = getWidth()/ NDECADES;
 		drawGrid(lineSpacing);
