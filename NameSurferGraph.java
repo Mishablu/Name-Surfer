@@ -76,6 +76,7 @@ public class NameSurferGraph extends GCanvas
 	}
 	/* this method draws the grid: the vertical lines and the date labels using a for loop, and the horizontal lines on their own */
 	private void drawGrid(int lineSpacing) {
+		//this for loop draws the vertical lines and the labels with equal spacing
 		for (int i=0 ; i < NDECADES ; i++) {
 			double x = i * lineSpacing;
 			add(new GLine(x, 0, x, getHeight()));
@@ -85,8 +86,9 @@ public class NameSurferGraph extends GCanvas
 		add(new GLine(0, getHeight() - GRAPH_MARGIN_SIZE , getWidth(), getHeight() - GRAPH_MARGIN_SIZE));
 	}
 	
-	
+	//this method plots the entries on the graph using connecting lines and labels at each decade
 	private void plotRanking(int lineSpacing) {
+		//this for loop 
 		for (int i = 0 ; i < nameArray.size() ; i++) {
 			NameSurferEntry entry = nameArray.get(i);
 			if (entry != null) {
