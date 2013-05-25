@@ -58,13 +58,8 @@ public class NameSurferGraph extends GCanvas
 			add(new GLine(x, GRAPH_MARGIN_SIZE, x, getHeight() - GRAPH_MARGIN_SIZE));
 			drawLabel(x, i);
 		}
-		drawHorizontalLine(GRAPH_MARGIN_SIZE);
-	}
-	private void drawHorizontalLine(int x) {
-		GLine line = new GLine (x, x, getWidth() - x , x);
-		GLine line2 = new GLine (x, getHeight() - x , getWidth() - x , getHeight() - x);
-		add(line);
-		add(line2);
+		add(new GLine(GRAPH_MARGIN_SIZE, GRAPH_MARGIN_SIZE, getWidth() - GRAPH_MARGIN_SIZE , GRAPH_MARGIN_SIZE));
+		add(new GLine(GRAPH_MARGIN_SIZE, getHeight() - GRAPH_MARGIN_SIZE , getWidth() - GRAPH_MARGIN_SIZE , getHeight() - GRAPH_MARGIN_SIZE));
 	}
 	private void drawLabel(double x , int i) {
 		GLabel label = new GLabel(Integer.toString(START_DECADE+(i*10)), x , getHeight()-(GRAPH_MARGIN_SIZE/3));
