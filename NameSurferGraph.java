@@ -88,13 +88,16 @@ public class NameSurferGraph extends GCanvas
 	
 	//this method plots the entries on the graph using connecting lines and labels at each decade
 	private void plotRanking(int lineSpacing) {
-		//this for loop 
+		//this for loop goes through the arraylist containing the name entries and extracts these one at a time in order to graph them
 		for (int i = 0 ; i < nameArray.size() ; i++) {
 			NameSurferEntry entry = nameArray.get(i);
 			if (entry != null) {
+				//initialize x1 and y1, two variables that will save the last point in order to draw the next line in the graph
 				double x1 = 0.0; 
 				double y1 = 0.0;
+				//this method sets the color of the line using the i of the for loop
 				Color color = setColor(i);
+				//this nested for loop 
 				for (int j=0 ; j<NDECADES ; j++) {
 					int ranking = entry.getRank(j);
 					double x = j * lineSpacing;
@@ -114,6 +117,7 @@ public class NameSurferGraph extends GCanvas
 			}
 		}
 	}
+	//this method sets the color of the line, alternating in order between 4 colors by using a switch statement and the i variable from the for loop in the previous method
 	private Color setColor(int i) {
 		switch(i % N_COLORS) {
 		case 0: return Color.black;
