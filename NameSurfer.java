@@ -75,8 +75,11 @@ public class NameSurfer extends Program implements NameSurferConstants {
 	}
 	//this method converts all the words entered to the adequate format: all lower case, starting with upper case
 	private String formatName(String str) {
+		//split the first letter from the rest and make it upper case
 		String firstLetter = str.substring(0,1).toUpperCase();
+		//take the rest and make it lower case
 		String word = str.substring(1).toLowerCase();
+		//join them again and return the changed string
 		str = firstLetter + word;
 		return str;
 	}
