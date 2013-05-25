@@ -135,8 +135,7 @@ public class NameSurferGraph extends GCanvas
 	private void drawLabel(double x, double y , String string, Color color, int lineSpacing) {
 		GLabel label = new GLabel(string, x , y);
 		label.setColor(color);
-		int fontSize = lineSpacing/5;
-		label.setFont("Times New Roman-" + fontSize);
+		label.setFont("Times New Roman-" + (lineSpacing/6));
 		add(label);
 	}
 	public void deleteEntry(NameSurferEntry entry){
