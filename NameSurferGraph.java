@@ -86,6 +86,7 @@ public class NameSurferGraph extends GCanvas
 		case 11: date = 2010; break;
 		}
 		GLabel label = new GLabel(Integer.toString(date), x , getHeight()-(GRAPH_MARGIN_SIZE/2));
+		label.move(-label.getWidth()/2, 0);
 		add(label);
 	}
 	
