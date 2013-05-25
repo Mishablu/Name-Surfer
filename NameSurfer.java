@@ -49,7 +49,6 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 		if(e.getActionCommand().equals("Clear")) removeAll();
 		
 		else if (e.getActionCommand().equals("Graph") || e.getSource() == nameField) {
-			graph.update();
 			String str = formatName(nameField.getText());
 			NameSurferEntry entry = dataBase.findEntry(str);
 			if (entry != null) {
