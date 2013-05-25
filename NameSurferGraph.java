@@ -81,9 +81,9 @@ public class NameSurferGraph extends GCanvas
 	private void plotRanking(int lineSpacing) {
 		for (int i = 0 ; i < nameArray.size() ; i++) {
 			NameSurferEntry entry = nameArray.get(i);
-			double x1 = 0.0; 
-			double y1 = 0.0;
 			if (entry != null) {
+				double x1 = 0.0; 
+				double y1 = 0.0;
 				for (int j=0 ; j<NDECADES ; j++) {
 					int ranking = entry.getRank(j);
 					double x = j * lineSpacing;

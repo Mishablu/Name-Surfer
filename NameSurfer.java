@@ -53,6 +53,8 @@ public class NameSurfer extends ConsoleProgram implements NameSurferConstants {
 			NameSurferEntry entry = dataBase.findEntry(str);
 			if (entry != null) {
 				println(entry.toString());
+				graph.addEntry(entry);
+				graph.update();
 			} else {
 				println("invalid entry, please enter another name");
 			}
