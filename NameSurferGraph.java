@@ -61,17 +61,15 @@ public class NameSurferGraph extends GCanvas
 	public void update() {
 		//check that this remove all doesnt cause bugzzz
 		removeAll();		
-		int lineSpacing = (getWidth()-(2*GRAPH_MARGIN_SIZE)) / (NDECADES);
+		int lineSpacing = getWidth()/ NDECADES;
 		drawGrid(lineSpacing);
 		
 	}
 	public void drawGrid(int lineSpacing) {
-		for (int i=0 ; i <= NDECADES ; i++) {
+		for (int i=0 ; i < NDECADES ; i++) {
 			double x = GRAPH_MARGIN_SIZE + (i * lineSpacing);
 			add(new GLine(x, GRAPH_MARGIN_SIZE, x, getHeight() - GRAPH_MARGIN_SIZE));
-			GLabel label = new GLabel(Integer.toString(START_DECADE+(i*10)), x , getHeight()-(GRAPH_MARGIN_SIZE/3));
-			label.move(-label.getWidth()/2, 0);
-			add(label);
+			add(new GLabel(Integer.toString(START_DECADE+(i*10)), x , getHeight()-(GRAPH_MARGIN_SIZE/3)));
 		}
 		add(new GLine(GRAPH_MARGIN_SIZE, GRAPH_MARGIN_SIZE, getWidth() - GRAPH_MARGIN_SIZE , GRAPH_MARGIN_SIZE));
 		add(new GLine(GRAPH_MARGIN_SIZE, getHeight() - GRAPH_MARGIN_SIZE , getWidth() - GRAPH_MARGIN_SIZE , getHeight() - GRAPH_MARGIN_SIZE));
