@@ -24,16 +24,17 @@ public class NameSurfer extends Program implements NameSurferConstants {
  */
 	public void init() {
 		
-		
+		//add the name text indicating that a name should be inserted into the text box
 		add(new JLabel("Name"), NORTH);
+		//add the text field where the user inserts the name he wants to search
 		nameField = new JTextField(TEXTBOX_SIZE);
 		add(nameField, NORTH);
 		nameField.addActionListener(this);
-		
+		//add the button to graph the name inserted
 		add(new JButton ("Graph"), NORTH);
-		
+		//add the button that clears the graph
 		add(new JButton("Clear"), NORTH);
-		
+		//add the button that deletes the graph of the name in the text field
 		add(new JButton("Delete"), NORTH);
 		
 		addActionListeners();
@@ -50,14 +51,19 @@ public class NameSurfer extends Program implements NameSurferConstants {
  */
 	public void actionPerformed(ActionEvent e) {
 		
+		//if the user clicks on the clear button, clear the graph
 		if(e.getActionCommand().equals("Clear")){
 			graph.clear();
+		//if the user clicks on the graph button or presses enter	
 		} else if (e.getActionCommand().equals("Graph") || e.getSource() == nameField) {
+			//get the name inserted in the text field and retrieve the namesurferentry related to the name inserted
 			String str = formatName(nameField.getText());
 			NameSurferEntry entry = dataBase.findEntry(str);
+			//if the entry exists in the database, add the entry to the graph (display it)
 			if (entry != null) {
 				graph.addEntry(entry);
 			}
+		
 		} else if (e.getActionCommand().equals("Delete")){
 			String str = formatName(nameField.getText());
 			NameSurferEntry entry = dataBase.findEntry(str);
