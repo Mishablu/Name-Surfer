@@ -110,7 +110,7 @@ public class NameSurferGraph extends GCanvas
 					if (j != 0) {
 						drawLine(x1, y1, x , y, color);
 					}
-					drawLabel (x, y, string);
+					drawLabel (x, y, string, color, lineSpacing);
 					x1 = x;
 					y1 = y;
 				}
@@ -132,8 +132,11 @@ public class NameSurferGraph extends GCanvas
 		line.setColor(color);
 		add(line);
 	}
-	private void drawLabel(double x, double y , String string) {
+	private void drawLabel(double x, double y , String string, Color color, int lineSpacing) {
 		GLabel label = new GLabel(string, x , y);
+		label.setColor(color);
+		int fontSize = lineSpacing/6;
+		label.setFont("Times New Roman-" + fontSize);
 		add(label);
 	}
 	public void deleteEntry(NameSurferEntry entry){
