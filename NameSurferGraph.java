@@ -125,6 +125,7 @@ public class NameSurferGraph extends GCanvas
 	public void deleteEntry(NameSurferEntry entry){
 		if (nameArray.contains(entry)) {
 			nameArray.remove(entry);
+			update();
 		}
 	}
 	

@@ -66,7 +66,6 @@ public class NameSurfer extends Program implements NameSurferConstants {
 			String str = formatName(nameField.getText());
 			NameSurferEntry entry = dataBase.findEntry(str);
 			graph.deleteEntry(entry);
-			graph.update();
 		}
 	}
 	private String formatName(String str) {
