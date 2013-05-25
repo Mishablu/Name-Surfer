@@ -64,7 +64,7 @@ public class NameSurferGraph extends GCanvas
 		int lineSpacing = getWidth()/ NDECADES;
 		drawGrid(lineSpacing);
 		if(!nameArray.isEmpty()) {
-			plotLines(lineSpacing);
+			plotRanking(lineSpacing);
 		}
 	}
 	private void drawGrid(int lineSpacing) {
@@ -77,27 +77,40 @@ public class NameSurferGraph extends GCanvas
 		add(new GLine(0, getHeight() - GRAPH_MARGIN_SIZE , getWidth(), getHeight() - GRAPH_MARGIN_SIZE));
 	}
 	
-	private void plotLines(int lineSpacing) {
-		//read entries from the array
+	
+	private void plotRanking(int lineSpacing) {
 		for (int i = 0 ; i < nameArray.size() ; i++) {
 			NameSurferEntry entry = nameArray.get(i);
+			double x1 = 0.0; 
+			double y1 = 0.0;
 			if (entry != null) {
-				drawPlotLine(entry, lineSpacing);
+				for (int j=0 ; j<NDECADES ; j++) {
+					int ranking = entry.getRank(j);
+					double x = j * lineSpacing;
+					double y = (((getHeight() - (2*GRAPH_MARGIN_SIZE)) * (double) ranking/MAX_RANK) + GRAPH_MARGIN_SIZE);
+					String string = entry.getName() + " " + Integer.toString(ranking);
+					if (ranking == 0) {
+						y = getHeight() - GRAPH_MARGIN_SIZE;
+						string = entry.getName() + "*";
+					}
+					if (j != 0) {
+						drawLine(x1, y1 , x ,y);
+					}
+					drawLabel (x, y, string);
+					x1 = x;
+					y1 = y;
+				}
 			}
 		}
 	}
-	private void drawPlotLine(NameSurferEntry entry, int lineSpacing) {
-		for (int i=0 ; i<NDECADES ; i++) {
-			int ranking = entry.getRank(i);
-			double x = i * lineSpacing;
-			double y = (((getHeight() - (2*GRAPH_MARGIN_SIZE)) * (double) ranking/MAX_RANK) + GRAPH_MARGIN_SIZE);
-			
-			
-			
-			
-		}
+	private void drawLine(double x1, double y1, double x, double y) {
+		GLine line = new GLine(x1, y1, x, y);
+		add(line);
 	}
-	
+	private void drawLabel(double x, double y , String string) {
+		GLabel label = new GLabel(string, x , y);
+		add(label);
+	}
 	
 	/* Implementation of the ComponentListener interface */
 	public void componentHidden(ComponentEvent e) { }
