@@ -36,6 +36,7 @@ public class NameSurfer extends Program implements NameSurferConstants {
 		add(clear, NORTH);
 		
 		JButton delete = new JButton("Delete");
+		add(delete, NORTH);
 		
 		addActionListeners();
 		
