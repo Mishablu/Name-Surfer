@@ -19,6 +19,8 @@ public class NameSurferGraph extends GCanvas
 	private ArrayList<NameSurferEntry> nameArray;
 	//initialize the maximum number of colors
 	private int N_COLORS = 4;
+	//initialize the instance variable that will define the size of the font in proportion to the window size
+	private int fontConstant = 6;
 	/**
 	* Creates a new NameSurferGraph object that displays the data.
 	*/
@@ -148,7 +150,7 @@ public class NameSurferGraph extends GCanvas
 	private void drawLabel(double x, double y , String string, Color color, int lineSpacing) {
 		GLabel label = new GLabel(string, x , y);
 		label.setColor(color);
-		label.setFont("Times New Roman-" + (lineSpacing/6));
+		label.setFont("Times New Roman-" + (lineSpacing/fontConstant));
 		add(label);
 	}
 	//this method deletes a particular entry from the graph
