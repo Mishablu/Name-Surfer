@@ -56,13 +56,9 @@ public class NameSurferGraph extends GCanvas
 		for (int i=0 ; i < NDECADES ; i++) {
 			double x = GRAPH_MARGIN_SIZE + i * lineSpacing;
 			add(new GLine(x, GRAPH_MARGIN_SIZE, x, getHeight() - GRAPH_MARGIN_SIZE));
-			add(new GLabel(Integer.toString(START_DECADE+(i*10)), x, getHeight()-(GRAPH_MARGIN_SIZE/3)));
+			drawLabel(x, i);
 		}
 		drawHorizontalLine(GRAPH_MARGIN_SIZE);
-	}
-	private void drawLine(int x) {
-		GLine line = new GLine(x, GRAPH_MARGIN_SIZE , x , getHeight() - GRAPH_MARGIN_SIZE);
-		add(line);
 	}
 	private void drawHorizontalLine(int x) {
 		GLine line = new GLine (x, x, getWidth() - x , x);
@@ -70,22 +66,8 @@ public class NameSurferGraph extends GCanvas
 		add(line);
 		add(line2);
 	}
-	private void drawLabel(int x , int i) {
-		int date = 0;
-		switch (i){
-		case 0: date = 1900; break;
-		case 1: date = 1910; break;
-		case 2: date = 1920; break;
-		case 3: date = 1930; break;
-		case 4: date = 1940; break;
-		case 5: date = 1950; break;
-		case 6: date = 1960; break;
-		case 7: date = 1970; break;
-		case 8: date = 1980; break;
-		case 9: date = 1990; break;
-		case 10: date = 2000; break;
-		}
-		GLabel label = new GLabel(Integer.toString(date), x , getHeight()-(GRAPH_MARGIN_SIZE/3));
+	private void drawLabel(double x , int i) {
+		GLabel label = new GLabel(Integer.toString(START_DECADE+(i*10)), x , getHeight()-(GRAPH_MARGIN_SIZE/3));
 		label.move(-label.getWidth()/2, 0);
 		add(label);
 	}
