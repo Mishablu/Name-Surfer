@@ -28,10 +28,15 @@ public class NameSurfer extends Program implements NameSurferConstants {
 		nameField = new JTextField(TEXTBOX_SIZE);
 		add(nameField, NORTH);
 		nameField.addActionListener(this);
+		
 		JButton graphButton = new JButton("Graph");
 		add(graphButton, NORTH);
+		
 		JButton clear = new JButton("Clear");
 		add(clear, NORTH);
+		
+		JButton delete = new JButton("Delete");
+		
 		addActionListeners();
 		
 		graph = new NameSurferGraph();
@@ -49,16 +54,18 @@ public class NameSurfer extends Program implements NameSurferConstants {
 		if(e.getActionCommand().equals("Clear")){
 			graph.clear();
 			graph.update();
-		}
-		
-		else if (e.getActionCommand().equals("Graph") || e.getSource() == nameField) {
+		} else if (e.getActionCommand().equals("Graph") || e.getSource() == nameField) {
 			String str = formatName(nameField.getText());
 			NameSurferEntry entry = dataBase.findEntry(str);
 			if (entry != null) {
-				//println(entry.toString());
 				graph.addEntry(entry);
 				graph.update();
 			}
+		} else if (e.getActionCommand().equals("Delete")){
+			String str = formatName(nameField.getText());
+			NameSurferEntry entry = dataBase.findEntry(str);
+			graph.deleteEntry(entry);
+			graph.update();
 		}
 	}
 	private String formatName(String str) {

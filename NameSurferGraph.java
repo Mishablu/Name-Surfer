@@ -122,6 +122,12 @@ public class NameSurferGraph extends GCanvas
 		GLabel label = new GLabel(string, x , y);
 		add(label);
 	}
+	public void deleteEntry(NameSurferEntry entry){
+		if (nameArray.contains(entry)) {
+			nameArray.remove(entry);
+			update();
+		}
+	}
 	
 	/* Implementation of the ComponentListener interface */
 	public void componentHidden(ComponentEvent e) { }
