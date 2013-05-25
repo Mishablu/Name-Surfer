@@ -58,8 +58,6 @@ public class NameSurfer extends Program implements NameSurferConstants {
 				//println(entry.toString());
 				graph.addEntry(entry);
 				graph.update();
-			} else {
-				println("invalid entry, please enter another name");
 			}
 		}
 	}
