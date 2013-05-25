@@ -15,6 +15,7 @@ import acmx.export.java.util.*;
 
 public class NameSurferDataBase implements NameSurferConstants {
 	
+	//initialize the hashmap where the names and rankings from the database will be stored.
 	private Map nameMap = new HashMap();
 	
 /* Constructor: NameSurferDataBase(filename) */
@@ -26,15 +27,18 @@ public class NameSurferDataBase implements NameSurferConstants {
  */
 	public NameSurferDataBase(String filename) {
 		
+		//open and read file
 		try{
 			BufferedReader rd = new BufferedReader(new FileReader(filename));
 			
 			while (true) {
 				String line = rd.readLine();
 				if (line == null) break;
+				//save and add each new line of the file into the hashmap
 				NameSurferEntry entry = new NameSurferEntry(line);
 				nameMap.put(entry.getName(), entry);
 			}
+		//catch and throw exceptions
 		} catch(Exception e) {
 			throw new ErrorException(e);
 		}
