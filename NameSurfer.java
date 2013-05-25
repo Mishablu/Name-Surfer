@@ -54,7 +54,7 @@ public class NameSurfer extends Program implements NameSurferConstants {
 		//if the user clicks on the clear button, clear the graph
 		if(e.getActionCommand().equals("Clear")){
 			graph.clear();
-		//if the user clicks on the graph button or presses enter	
+		//if the user clicks on the graph button or presses enter, graph the entry entered into the text field if it exists in the data base
 		} else if (e.getActionCommand().equals("Graph") || e.getSource() == nameField) {
 			//get the name inserted in the text field and retrieve the namesurferentry related to the name inserted
 			String str = formatName(nameField.getText());
@@ -63,8 +63,9 @@ public class NameSurfer extends Program implements NameSurferConstants {
 			if (entry != null) {
 				graph.addEntry(entry);
 			}
-		
+		//if the user clicks on delete, delete from the graph the entry entered in the text field
 		} else if (e.getActionCommand().equals("Delete")){
+			//get the name inserted in the text field and retrieve the namesurferentry related to the name inserted
 			String str = formatName(nameField.getText());
 			NameSurferEntry entry = dataBase.findEntry(str);
 			if (entry != null) {
@@ -72,6 +73,7 @@ public class NameSurfer extends Program implements NameSurferConstants {
 			}
 		}
 	}
+	//this method converts all the words entered to the adequate format: all lower case, starting with upper case
 	private String formatName(String str) {
 		String firstLetter = str.substring(0,1).toUpperCase();
 		String word = str.substring(1).toLowerCase();
