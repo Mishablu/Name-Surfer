@@ -79,9 +79,12 @@ public class NameSurferGraph extends GCanvas
 		//this for loop draws the vertical lines and the labels with equal spacing
 		for (int i=0 ; i < NDECADES ; i++) {
 			double x = i * lineSpacing;
+			//add vertical lines
 			add(new GLine(x, 0, x, getHeight()));
+			//add date labels
 			add(new GLabel(Integer.toString(START_DECADE+(i*10)), x , getHeight()-(GRAPH_MARGIN_SIZE/3)));
 		}
+		//add horizontal lines
 		add(new GLine(0, GRAPH_MARGIN_SIZE, getWidth(), GRAPH_MARGIN_SIZE));
 		add(new GLine(0, getHeight() - GRAPH_MARGIN_SIZE , getWidth(), getHeight() - GRAPH_MARGIN_SIZE));
 	}
@@ -90,27 +93,35 @@ public class NameSurferGraph extends GCanvas
 	private void plotRanking(int lineSpacing) {
 		//this for loop goes through the arraylist containing the name entries and extracts these one at a time in order to graph them
 		for (int i = 0 ; i < nameArray.size() ; i++) {
-			NameSurferEntry entry = nameArray.get(i);
+			NameSurferEntry entry = nameArray.get(i);				
+			//this method sets the color of the line using the i of the for loop
+			Color color = setColor(i);				
+			//initialize x1 and y1, two variables that will save the last point in order to draw the next line in the graph
+			double x1 = 0.0; 
+			double y1 = 0.0;
 			if (entry != null) {
-				//initialize x1 and y1, two variables that will save the last point in order to draw the next line in the graph
-				double x1 = 0.0; 
-				double y1 = 0.0;
-				//this method sets the color of the line using the i of the for loop
-				Color color = setColor(i);
-				//this nested for loop 
+				//this nested for loop goes through each ranking of the entry in order to graph it
 				for (int j=0 ; j<NDECADES ; j++) {
+					//get the ranking at the particular iteration from the entry
 					int ranking = entry.getRank(j);
+					//define the x point on the graph from the particular iteration j
 					double x = j * lineSpacing;
+					//define the y point on the graph using the ranking retrieved from the entry
 					double y = (((getHeight() - (2*GRAPH_MARGIN_SIZE)) * (double) ranking/MAX_RANK) + GRAPH_MARGIN_SIZE);
+					//define the string that will contain the name and the ranking number at that decade
 					String string = entry.getName() + " " + Integer.toString(ranking);
+					//if the ranking equals 0, change it to be at the bottom and not at the top of the graph and change the string to have an * instead of a ranking at the end
 					if (ranking == 0) {
 						y = getHeight() - GRAPH_MARGIN_SIZE;
 						string = entry.getName() + "*";
 					}
+					//if it not the first iteration of the nested for loop (j!=0), draw a line linking last decade to the current decade
 					if (j != 0) {
 						drawLine(x1, y1, x , y, color);
 					}
+					//draw a label at the point on the vertical line representing the decade to graphically represent the ranking
 					drawLabel (x, y, string, color, lineSpacing);
+					//save the last x and y to use them as starting point for the line in the next iteration
 					x1 = x;
 					y1 = y;
 				}
@@ -127,18 +138,22 @@ public class NameSurferGraph extends GCanvas
 		}
 		return null;
 	}
+	//this method draws a line of a particular color. it is used to draw the lines graphically representing the name rankings
 	private void drawLine(double x1, double y1, double x, double y, Color color) {
 		GLine line = new GLine(x1, y1, x, y);
 		line.setColor(color);
 		add(line);
 	}
+	//this method draws the labels displaying the name and the ranking at each decade of a specific color (depending on how many names are already on the graph) and particular size (depending on the size of the window)
 	private void drawLabel(double x, double y , String string, Color color, int lineSpacing) {
 		GLabel label = new GLabel(string, x , y);
 		label.setColor(color);
 		label.setFont("Times New Roman-" + (lineSpacing/6));
 		add(label);
 	}
+	//this method deletes a particular entry from the graph
 	public void deleteEntry(NameSurferEntry entry){
+		//this if statement ensures the entry is already displayed on the graph
 		if (nameArray.contains(entry)) {
 			nameArray.remove(entry);
 			update();
